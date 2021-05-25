@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sony Yadav</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
+
+
+</head>
+
+<body style="background-color:black">
+  <div class="top-container">
+
+    <div class="title-text">
+      <img src="images/sony.png" alt="sony-profile-img">
+      <h2>Hello.</h2>
+      <h1>I'm Sony.</h1>
+
+      <h2>
+        <a href="" class="typewrite" data-period="2000" data-type='[ "A PROgrammer. 💻 ", "Python developer. 🐍 ", "Java Developer. ☕️ ", "Data Analyst. 📈 ","Public Speaker. 🎤 " ]'>
+          <span class="wrap"></span>
+        </a>
+      </h2>
+
+    </div>
+
+  </div>
+
+  <div class="middle-container">
+    <div class="profile">
+
+
+      <p class="intro">Technology is fascinating and I love it. 🙃</p>
+      <p class="intro">I am proud software engineer and it pushes me to develop professionally and personally while letting me interact with people and technology that I love.
+I'm a self-determined individual not satisfied with anything less than extraordinary.
+Each day I hope to learn more, experience new adventures, and meet new people.
+
+      </p>
+
+      <hr>
+    </div>
+
+
+    <div class="skills">
+
+      <h2>Work Experience.</h2>
+      <div class="skill-row">
+        <img class="code-img" src="images/wipro.png" alt="wipro-img">
+        <img class="code-img" src="images/kentCameye.png" alt="kent-img">
+          <img class="code-img" src="images/tcs.png" alt="tcs-img">
+
+        <h3>Developer Analyst</h3>
+        <p>Currently working as developer analyst in Wipro</p>
+
+
+
+
+      </div>
+
+      <div class="skill-row">
+
+
+        <h3>Client served</h3>
+        <img class="client-img" src="images/alight.png" alt="wipro-img">
+        <img class="client-img" src="images/amgen.png" alt="kent-img">
+          <img class="client-img" src="images/apple.png" alt="tcs-img">
+          <img class="client-img" src="images/jpMorgan.png" alt="kent-img">
+
+
+      </div>
+<hr>
+
+
+    </div>
+    <div>
+      <h2>Skills Aquired.</h2>
+          <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    </div>
+<hr>
+    <div class="contact-me">
+
+      <h2>Get In Touch</h2>
+      <h3>If you fell, we can colaborate and help each other, fell free to connect with me</h3>
+      <p class="contact-message">Let's share some stories and make some strategies!</p>
+      <a class="btn" href="sohni2012@gmail.com">CONTACT ME</a>
+    </div>
+  </div>
+
+
+  <div class="bottom-container">
+    <a class="footer-link" href="https://www.linkedin.com/in/sonyy/">LinkedIn</a>
+    <a class="footer-link" href="https://twitter.com/yu_angela">Twitter</a>
+    <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
+    <p class="copyright">© I don't own any intellectual property.Its all from you and its all for you.Copying and creating since 1992.© </p>
+  </div>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Technology', 'Effort given'],
+          ['Python',     90],
+          ['Java',      90],
+          ['Data Analytics',  20],
+          ['Blockchain', 10],
+          ['Golang',    7],
+          ['AI ML',    7]
+        ]);
+
+        var options = {
+
+          is3D: true,
+          slices: {0: {color: '#f7a440'}, 1:{color: '#511281'}, 2:{color: '#34656d'}, 3: {color: '#334443'}, 4:{color: '#1eae98'}, 5: {color: '#ffffc7'}},
+          backgroundColor:"Black",
+          legend : { position: 'top', textStyle: {color: 'white', fontSize: 16} }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+
+      }
+    </script>
+
+    <script type="text/javascript">
+    var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+            }
+
+            setTimeout(function() {
+            that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                  new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid green}";
+            document.body.appendChild(css);
+        };
+
+    </script>
+
+</body>
+
+</html>
